@@ -1,3 +1,4 @@
+# Nmap
 **Nmap (Network Mapper)** is a free and open-source utility used for **network discovery** and **security auditing**. It is widely used by network administrators, security professionals, and ethical hackers to scan networks, identify active hosts, detect open ports, determine running services and their versions, and fingerprint operating systems.
 
 ## Basic Nmap Usage
@@ -23,8 +24,8 @@ nmap <scan type> <options> <target>
 ![](SCs/scantypes.png)
 **Basic Scan Options** 
 - `-p` - Port Specification. (eg: `-p22, -p1-100, -p80,443,111,500)
- - `--top-ports` - Scans most commonly used ports. Default is 1000.
- - `--open` - Show only open or possibly open ports.
+	- `--top-ports` - Scans most commonly used ports. Default is 1000.
+	- `--open` - Show only open or possibly open ports.
 - `-sV` - Perform service/version detection.
 - `-O` - OS detection.
 - `-A` - Enable OS detection, version detection, default script scanning, and traceroute.
@@ -33,8 +34,8 @@ nmap <scan type> <options> <target>
 - `-v, -vv, -vvv` - Increase output verbosity.
 - `-T` - Set timing template. `<0-5>` 5 is the fastest.
 - `-sC` - Default script scan.
- - `--script=<scriptname>` - Specify which script/s to use.
-		![](SCs/script.png)
+	- `--script=<scriptname>` - Specify which script/s to use.
+	![](SCs/script.png)
 - `-f` - Fragment packets making it less likely that they will be detected by a firewall or IDS.
 - `-S` - Spoof source IP address. 
 - `-g / --source-port` - Specify source port number to use.

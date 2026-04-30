@@ -1,11 +1,11 @@
-# Command Cheatsheet
+# Basic Commands Cheatsheet
 ## Linux Filesystem & Permissions
 - `ls` - Lists all files and directories in current working directory:
 	- `ls dirname` - Lists all under specified directory
 	- `ls /path/to/dir` - Absolute path listing to a specific dir such as `ls /usr/share`
 	- `ls -a` - Also lists hidden files
 	- `ls -l` - Long listing: Shows filename, type *directory (d), file (-), symbolic link (l)*, permissions, owner, group, size, timestamp.
-### Linux Filesystem Hierarchy
+## Linux Filesystem Hierarchy
 ```bash
 ls -l /
 ```
@@ -22,20 +22,21 @@ Lists all directories listed under the root directory. Some of the most importan
 - /var - Variable directory, it's used for system logging, user tracking, caches, etc. Basically anything that is subject to change all the time
 - /tmp - Storage for temporary files that are automatically deleted after every reboot.
 
-### Linux File Permissions
+## Linux File Permissions
 - `mkdir` - Creates a new directory
 - `touch` - Creates a new empty file
 There are four parts to a file's permissions. The first part is the filetype, which is denoted by the first character in the permissions:
-- -: File
-- d: Directory
-- l: Symbolic Link
-The next three parts of the file mode are the actual permissions grouped into 3 bits each. The first 3 bits are user permissions, then group permissions and then other permissions.
-Each character represent a different permission:  
-- r: readable
-- w: writable
-- x: executable 
-	
-	![](SCs/filecreate.png)
+	- -: File
+	- d: Directory
+	- l: Symbolic Link
+ 
+- The next three parts of the file mode are the actual permissions grouped into 3 bits each. The first 3 bits are user permissions, then group permissions and then other permissions.
+Each character represent a different permission:
+	- r: readable
+	- w: writable
+	- x: executable 
+
+![](SCs/filecreate.png)
 
 - `chmod` - Modifying file permissions
 	- +: Add permissions
@@ -48,13 +49,14 @@ Each character represent a different permission:
 	- `sudo chown <user> <filename>`
 - `chgrp` - Modify group ownership of files
 	- `sudo chgrp <group> <filename>`
+
 **Modify both user and group ownership at the same time:**
 
 ```bash
 	sudo chown <user>:<group> <filename>
 ```
-	
-- ![](SCs/modifyowners.png)
+
+ ![](SCs/modifyowners.png)
 
 **SUID (Set User ID)** is a special file permission in Linux systems that allows a binary to execute with the privileges of the file owner rather than the user running it.  When a binary owned by root has the SUID bit set, a non-privileged user executing that file will temporarily gain root-level access.
 **SGID (Set Group ID)** allows a program to run as if it was a member of that group.
@@ -73,7 +75,7 @@ find / -perm -u=s -type f 2>/dev/null
 
 	![](SCs/findsuid.png)
 
-**NOTE** - Attackers frequently target SUID binaries for **privilege escalation** by identifying misconfigured or outdated executables hence after identifying SUID binaries, check them against **GTFOBins** (*gtfobins.github.io*) to see if they have known exploitation paths for privilege escalation.
+**NOTE** - Attackers frequently target SUID binaries for **privilege escalation** by identifying misconfigured or outdated executables hence after identifying SUID binaries, check them against [**GTFOBins**](https://gtfobins.org/) to see if they have known exploitation paths for privilege escalation.
 
 - `df` - Reports file system disk space usage and other details about your disk.
 	
@@ -96,9 +98,10 @@ Processes are programs running on a machine. They are managed by the kernel and 
 Process information on a Linux system is stored in a special filesystem known as the */proc* filesystem. 
 - `ls /proc` - Lists subdirectories for every PID .
 	- `ls /proc/<PID>/status` shows detailed information about the associated process.
-		![](lsproc.png)
 
-		![](catproc.png)
+		![](SCs/lsproc.png)
+		![](SCs/catproc.png)
+
 - `ps` - Shows a list of running processes.
 	- `ps a` - Displays all running processes including those run by other users.
 	- `ps u` - Shows more details about the processes such as user and % CPU and memory used.
